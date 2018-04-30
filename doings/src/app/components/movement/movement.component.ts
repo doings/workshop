@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
+import {MovementFormComponent} from './../movement-form/movement-form.component';
+
 @Component({
   selector: 'doings-movement',
   templateUrl: './movement.component.html',
@@ -7,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovementComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
-
+  showModal() {
+    let dialogRef = this.dialog.open(MovementFormComponent);
+  }
 }

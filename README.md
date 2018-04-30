@@ -1,7 +1,7 @@
 # Welcome to doings workshop
 ---
 
-## 1. Create project
+## 1.Create project
 **Install angular cli**
 - npm install -g @angular/cli
 
@@ -14,7 +14,7 @@
 - cd doings
 - npm install
 
-## 2. Basic layout
+## 1. Basic layout
 **Create components**
 - ng g component components/user
 - ng g component components/movement
@@ -22,7 +22,7 @@
 **Create service**
 - ng g service services/data
 
-## 3. Angular Material
+## 2. Angular Material
 **Install Angular Material and Angular CDK**
 - npm install @angular/material @angular/cdk web-animations-js hammerjs --save
 
@@ -35,4 +35,20 @@
 - import { CdkTableModule } from '@angular/cdk/table';
 
 **Add your material theme**
+
+## 3. Launch Modal
+
+**Call function on click**
+- (click)="launchModal()"
+
+**Launch modal in function**
+- import {MatDialog} from '@angular/material';
+- public dialog: MatDialog
+- let dialogRef = this.dialog.open(MovementFormComponent);
+
+**Close modal**
+- import {MatDialogRef} from '@angular/material';
+- public dialogRef: MatDialogRef<MovementFormComponent>
+- this.dialogRef.close();
+
 
