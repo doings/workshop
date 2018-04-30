@@ -1,5 +1,19 @@
 
-<h1>Your balance is 0</h1>
-<p>Expenses: -</p>
-<p>Incomes: -</p>
+<mat-toolbar class="user-toolbar" color="primary">
+  <mat-toolbar-row>
+    <mat-icon class="">account_balance_wallet</mat-icon>
+    <mat-divider [vertical]="true"></mat-divider>
+    <h1>Your balance is 0</h1>
+  </mat-toolbar-row>
+</mat-toolbar>
 
+<mat-card>
+  <mat-grid-list cols="2" rowHeight="20px">
+    <mat-grid-tile>
+      <small>Expenses: -</small>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <small>Incomes: -</small>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>

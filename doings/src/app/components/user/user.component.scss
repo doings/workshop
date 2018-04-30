@@ -1,0 +1,17 @@
+
+.user-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .mat-icon {
+    margin-right: 10px;
+  }
+}
+
+.user-summaries {
+
+  p {
+    text-align: left;
+  }
+}

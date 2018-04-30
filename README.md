@@ -22,5 +22,17 @@
 **Create service**
 - ng g service services/data
 
+## 3. Angular Material
+**Install Angular Material and Angular CDK**
+- npm install @angular/material @angular/cdk web-animations-js hammerjs --save
 
+**Add some polyfills in polyfills.ts**
+- import 'web-animations-js';
+- import 'hammerjs';
+
+**Import you material components modules**
+- import { MatButtonModule, MatDatepickerModule, MatInputModule, MatTableModule} from '@angular/material';
+- import { CdkTableModule } from '@angular/cdk/table';
+
+**Add your material theme**
 
