@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 
@@ -63,6 +64,7 @@ import { MovementFormComponent } from './components/movement-form/movement-form.
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
@@ -78,7 +80,8 @@ import { MovementFormComponent } from './components/movement-form/movement-form.
     MatSnackBarModule,
     MatStepperModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ReactiveFormsModule
   ],
   providers: [
     DataService

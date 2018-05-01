@@ -1,5 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
+import {formatDate} from './../../shared/utils';
 
 @Component({
   selector: 'doings-movement-form',
@@ -8,14 +16,29 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class MovementFormComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<MovementFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  form : FormGroup;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<MovementFormComponent>,
+    private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      movement_uuid: [null],
+      amount: [null, Validators.required],
+      concept: [null, Validators.required],
+      date: [null, Validators.required],
+      type: [null, Validators.required]
+    });
+  }
 
   ngOnInit() {
   }
 
   save() {
-    this.dialogRef.close();
+    if(this.form.valid){
+      let movement = this.form.value;
+      if(!movement.movement_uuid) movement.movement_uuid = '_' + Math.random().toString(36).substr(2, 15);
+      movement.date = formatDate(movement.date);
+      console.log('Save movement', movement);
+      this.dialogRef.close();
+    }
   }
-
 }

@@ -1,7 +1,7 @@
 # Welcome to doings workshop
 ---
 
-## 1.Create project
+## Create project
 **Install angular cli**
 - npm install -g @angular/cli
 
@@ -50,5 +50,16 @@
 - import {MatDialogRef} from '@angular/material';
 - public dialogRef: MatDialogRef<MovementFormComponent>
 - this.dialogRef.close();
+
+## 4. Movement form
+
+**Angular forms**
+- Template-driven forms
+- Reactive forms
+
+**Form validation**
+- Validators
+- Custom validators
+
 
 

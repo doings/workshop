@@ -1,8 +1,46 @@
 
 <h1 mat-dialog-title>Insert movement</h1>
 <div mat-dialog-content>
-  <p>Let's insert a new movement</p>
+  <form [formGroup]="form">
+    <div class="movement-container">
+      <mat-form-field>
+        <input matInput placeholder="Amount" formControlName="amount" class="amount" pattern="[0-9.]+">
+        <mat-error *ngIf="!form.controls.amount.valid">
+          Please enter a valid amount, like 5.99
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Concept" formControlName="concept">
+        <mat-error *ngIf="!form.controls.concept.valid">
+          Please enter a valid concept
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Type" formControlName="type">
+          <mat-option value="outcome">Expense</mat-option>
+          <mat-option value="income">Income</mat-option>
+          <mat-option value="balance">Balance</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!form.controls.type.valid || form.controls.type.dirty">
+          Please enter a movement type
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <span class="datepicker">
+          <mat-datepicker-toggle matSuffix [for]="pickerDate"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDate></mat-datepicker>              
+          <input matInput [matDatepicker]="pickerDate" formControlName="date">
+        </span>
+        <mat-error *ngIf="!form.controls.date.valid || form.controls.date.dirty">
+          Please enter a date
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="save()">Ok</button>
+  <button mat-raised-button color="primary" (click)="save()">Insert</button>
 </div>
