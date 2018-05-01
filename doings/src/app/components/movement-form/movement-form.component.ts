@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
+import {DataService} from './../../services/data.service';
 import {formatDate} from './../../shared/utils';
 
 @Component({
@@ -18,6 +19,7 @@ export class MovementFormComponent implements OnInit {
 
   form : FormGroup;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+    public dataService: DataService,
     public dialogRef: MatDialogRef<MovementFormComponent>,
     private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
@@ -37,7 +39,7 @@ export class MovementFormComponent implements OnInit {
       let movement = this.form.value;
       if(!movement.movement_uuid) movement.movement_uuid = '_' + Math.random().toString(36).substr(2, 15);
       movement.date = formatDate(movement.date);
-      console.log('Save movement', movement);
+      this.dataService.saveMovement(movement);
       this.dialogRef.close();
     }
   }

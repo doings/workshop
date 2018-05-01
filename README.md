@@ -61,5 +61,11 @@
 - Validators
 - Custom validators
 
+## 5. Save movement
+
+**Storage**
+- Localstorage
+- IndexedDB
+
 
 
