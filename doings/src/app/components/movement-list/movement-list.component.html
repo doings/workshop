@@ -1,6 +1,6 @@
 
 <mat-list>
-  <mat-list-item *ngFor="let movement of movements">
+  <mat-list-item *ngFor="let movement of sortedMovs">
     <mat-icon mat-list-icon>
       {{movement.type=='outcome'?'arrow_downward':'arrow_upward'}}
     </mat-icon>

@@ -74,3 +74,8 @@
 - Pass movements to list
 - Render movements list
 
+## 7. Show balance
+
+**Pipes**
+- BalancePipe
+

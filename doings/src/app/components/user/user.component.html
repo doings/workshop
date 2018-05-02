@@ -3,17 +3,18 @@
   <mat-toolbar-row>
     <mat-icon class="">account_balance_wallet</mat-icon>
     <mat-divider [vertical]="true"></mat-divider>
-    <h1>Your balance is 0</h1>
+    <h1>Your balance is {{ movements | balance:'balance' }}€</h1>
+    <h2>{{ today | date }}</h2>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-card>
   <mat-grid-list cols="2" rowHeight="20px">
     <mat-grid-tile>
-      <small>Expenses: -</small>
+      <small>Expenses: {{ movements | balance:'outcome' }}€</small>
     </mat-grid-tile>
     <mat-grid-tile>
-      <small>Incomes: -</small>
+      <small>Incomes: {{ movements | balance:'income' }}€</small>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>

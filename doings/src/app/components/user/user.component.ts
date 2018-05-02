@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'doings-user',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  today;
+  @Input('movements') movements: any;
+  constructor() {
+    this.today = new Date();
+  }
 
   ngOnInit() {
   }

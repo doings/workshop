@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import {DataService} from './services/data.service';
 
-import {sortList} from './shared/utils';
+import {sortHistorical} from './shared/utils';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,6 @@ export class AppComponent {
   movements: any;
   constructor(public dataService: DataService) {
     let movements = dataService.getMovements();
-    this.movements = sortList(movements);
+    this.movements = sortHistorical(movements);
   }
 }
