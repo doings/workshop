@@ -102,3 +102,10 @@
 **Styling**
 **Community**
 
+## 13. Movements chart
+
+**Chart types**
+**PlotOptions**
+**Axis**
+**Series**
+
