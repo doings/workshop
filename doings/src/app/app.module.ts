@@ -34,6 +34,7 @@ import { DataService } from './services/data.service';
 import { MovementFormComponent } from './components/movement-form/movement-form.component';
 import { MovementListComponent } from './components/movement-list/movement-list.component';
 import { BalancePipe } from './pipes/balance.pipe';
+import { MovementFilterComponent } from './components/movement-filter/movement-filter.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { BalancePipe } from './pipes/balance.pipe';
     MovementComponent,
     MovementFormComponent,
     MovementListComponent,
-    BalancePipe
+    BalancePipe,
+    MovementFilterComponent
   ],
   entryComponents: [
     MovementFormComponent

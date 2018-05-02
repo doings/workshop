@@ -38,3 +38,14 @@ export function sortHistorical(movements) {
   }
   return movements;
 }
+
+export function filterMovs(movements, filter) {
+  if(filter && filter!='') {
+    let filterValue = filter.toLowerCase();
+    movements = filterValue.length ? movements.filter((x)=> {
+      let concept = x.concept ? x.concept.toLowerCase() : '';
+      return (concept&&concept.indexOf(filterValue)!=-1)
+    }) : movements;
+  }
+  return movements;
+}
