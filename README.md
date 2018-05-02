@@ -67,5 +67,10 @@
 - Localstorage
 - IndexedDB
 
+## 6. Show movements
 
+**Show movements**
+- Get movements
+- Pass movements to list
+- Render movements list
 

@@ -5,6 +5,9 @@ export class DataService {
 
   constructor() { }
 
+  getMovements() {
+    return this.getItem('movements');
+  }
   saveMovement(movement) {
     let movements = this.getItem('movements');
     if(!movements) movements = [];

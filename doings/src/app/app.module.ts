@@ -16,6 +16,7 @@ import {
   MatGridListModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
   MatNativeDateModule,
   MatSelectModule,
   MatSnackBarModule,
@@ -31,6 +32,7 @@ import { MovementComponent } from './components/movement/movement.component';
 
 import { DataService } from './services/data.service';
 import { MovementFormComponent } from './components/movement-form/movement-form.component';
+import { MovementListComponent } from './components/movement-list/movement-list.component';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { MovementFormComponent } from './components/movement-form/movement-form.
     AppComponent,
     UserComponent,
     MovementComponent,
-    MovementFormComponent
+    MovementFormComponent,
+    MovementListComponent
   ],
   entryComponents: [
     MovementFormComponent
@@ -54,6 +57,7 @@ import { MovementFormComponent } from './components/movement-form/movement-form.
     MatGridListModule,
     MatIconModule,
     MatInputModule,
+    MatListModule,
     MatNativeDateModule,
     MatSelectModule,
     MatSnackBarModule,
@@ -75,6 +79,7 @@ import { MovementFormComponent } from './components/movement-form/movement-form.
     MatGridListModule,
     MatIconModule,
     MatInputModule,
+    MatListModule,
     MatNativeDateModule,
     MatSelectModule,
     MatSnackBarModule,
