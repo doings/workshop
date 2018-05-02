@@ -90,3 +90,5 @@
 
 **Pass data to modal**
 
+## 10. Delete movement
+

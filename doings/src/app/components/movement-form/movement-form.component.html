@@ -43,4 +43,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="save()">{{form.value.movement_uuid ? 'Edit':'Insert'}}</button>
+  <button *ngIf="form.value.movement_uuid" mat-button color="primary" (click)="delete(form.value.movement_uuid)">Delete</button>
 </div>

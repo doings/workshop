@@ -44,4 +44,9 @@ export class MovementFormComponent implements OnInit {
       this.dialogRef.close();
     }
   }
+
+  delete(movement_uuid) {
+    this.dataService.deleteMovement(movement_uuid);
+    this.dialogRef.close();
+  }
 }

@@ -26,6 +26,12 @@ export class DataService {
     this.movementsChange.next(movements);
     return this.setItem('movements', movements);
   }
+  deleteMovement(movement_uuid) {
+    let movements = this.getItem('movements');
+    if(movement_uuid) movements = movements.filter((m)=>m.movement_uuid!=movement_uuid);
+    this.movementsChange.next(movements);
+    return this.setItem('movements', movements);
+  }
   getItem(key) {
     return JSON.parse(localStorage.getItem(key));
   }
