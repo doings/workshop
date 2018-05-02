@@ -1,6 +1,13 @@
 
 <doings-user [movements]="movements"></doings-user>
-<doings-movement-filter (filterChanged)="changeFilter($event)"></doings-movement-filter>
-<doings-movement-list [movements]="movements"></doings-movement-list>
+<div class="app-container">
+  <div class="chart-container">
+    <doings-movement-chart [movements]="movements"></doings-movement-chart>
+  </div>
+  <div class="list-container">
+    <doings-movement-filter (filterChanged)="changeFilter($event)"></doings-movement-filter>
+    <doings-movement-list [movements]="movements"></doings-movement-list>
+  </div>
+</div>
 <doings-movement></doings-movement>
 

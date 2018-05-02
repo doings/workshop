@@ -1,4 +1,19 @@
 
+.movement-list-container {
+  overflow: scroll;
+  height: 100%;
+  @media screen and (max-width: 720px){
+    overflow: visible;
+    height: auto;
+  }
+}
+
+.mat-list-item {
+  &:last-child {
+    margin-bottom: 160px;
+  }
+}
+
 b {
   font-size: 26px;
   font-weight: 400;

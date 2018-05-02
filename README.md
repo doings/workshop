@@ -94,3 +94,11 @@
 
 ## 11. Filter movements
 
+## 12. Highcharts
+
+**Easy to use**
+**Responsive**
+**Touch**
+**Styling**
+**Community**
+

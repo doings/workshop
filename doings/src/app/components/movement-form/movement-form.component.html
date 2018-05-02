@@ -1,4 +1,5 @@
 
+<div class="movement-form-container">
 <h1 mat-dialog-title>{{form.value.movement_uuid ? 'Edit':'Insert'}} movement</h1>
 <div mat-dialog-content>
   <form [formGroup]="form">
@@ -44,4 +45,5 @@
 <div mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="save()">{{form.value.movement_uuid ? 'Edit':'Insert'}}</button>
   <button *ngIf="form.value.movement_uuid" mat-button color="primary" (click)="delete(form.value.movement_uuid)">Delete</button>
+</div>
 </div>

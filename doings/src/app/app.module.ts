@@ -35,6 +35,7 @@ import { MovementFormComponent } from './components/movement-form/movement-form.
 import { MovementListComponent } from './components/movement-list/movement-list.component';
 import { BalancePipe } from './pipes/balance.pipe';
 import { MovementFilterComponent } from './components/movement-filter/movement-filter.component';
+import { MovementChartComponent } from './components/movement-chart/movement-chart.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { MovementFilterComponent } from './components/movement-filter/movement-f
     MovementFormComponent,
     MovementListComponent,
     BalancePipe,
-    MovementFilterComponent
+    MovementFilterComponent,
+    MovementChartComponent
   ],
   entryComponents: [
     MovementFormComponent
