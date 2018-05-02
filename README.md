@@ -79,3 +79,10 @@
 **Pipes**
 - BalancePipe
 
+## 8. Movement EventEmitter
+
+**Observables**
+**EventEmitters**
+**RxJS library**
+**ngOnInit, ngOnChanges**
+

@@ -18,4 +18,8 @@ export class MovementListComponent implements OnInit {
     this.sortedMovs = sortList(this.movements);
   }
 
+  ngOnChanges(map) {
+    this.sortedMovs = sortList(this.movements);
+  }
+
 }
