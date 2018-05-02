@@ -1,5 +1,5 @@
 
-<h1 mat-dialog-title>Insert movement</h1>
+<h1 mat-dialog-title>{{form.value.movement_uuid ? 'Edit':'Insert'}} movement</h1>
 <div mat-dialog-content>
   <form [formGroup]="form">
     <div class="movement-container">
@@ -42,5 +42,5 @@
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="save()">Insert</button>
+  <button mat-raised-button color="primary" (click)="save()">{{form.value.movement_uuid ? 'Edit':'Insert'}}</button>
 </div>

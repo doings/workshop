@@ -15,9 +15,7 @@ export class AppComponent {
     let movements = dataService.getMovements();
     this.movements = sortHistorical(movements);
     this.dataService.movementsChanged.subscribe( 
-      movements => {
-        this.movements = sortHistorical(movements);
-      }
+      movements => this.movements = sortHistorical(movements)
     );
   }
 }

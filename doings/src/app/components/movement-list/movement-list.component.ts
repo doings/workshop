@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
+import {MovementFormComponent} from './../movement-form/movement-form.component';
+
 import {sortList} from './../../shared/utils';
 
 @Component({
@@ -11,8 +15,7 @@ export class MovementListComponent implements OnInit {
 
   sortedMovs: any;
   @Input('movements') movements: any;
-  constructor() {
-  }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
     this.sortedMovs = sortList(this.movements);
@@ -20,6 +23,13 @@ export class MovementListComponent implements OnInit {
 
   ngOnChanges(map) {
     this.sortedMovs = sortList(this.movements);
+  }
+
+  editMovement(movement) {
+    let dialogRef = this.dialog.open(MovementFormComponent, {
+      width: '280px',
+      data: movement
+    });
   }
 
 }

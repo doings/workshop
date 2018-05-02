@@ -18,7 +18,11 @@ export class DataService {
   saveMovement(movement) {
     let movements = this.getItem('movements');
     if(!movements) movements = [];
-    movements.push(movement);
+    if(movement.movement_uuid && movements.filter((m)=>m.movement_uuid==movement.movement_uuid).length){
+      movements = movements.map((m)=>m.movement_uuid==movement.movement_uuid?movement:m);
+    }else{
+      movements.push(movement);
+    }
     this.movementsChange.next(movements);
     return this.setItem('movements', movements);
   }

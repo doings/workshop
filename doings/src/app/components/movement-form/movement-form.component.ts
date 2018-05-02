@@ -22,12 +22,13 @@ export class MovementFormComponent implements OnInit {
     public dataService: DataService,
     public dialogRef: MatDialogRef<MovementFormComponent>,
     private formBuilder: FormBuilder) {
+    let movement = this.data;
     this.form = this.formBuilder.group({
-      movement_uuid: [null],
-      amount: [null, Validators.required],
-      concept: [null, Validators.required],
-      date: [null, Validators.required],
-      type: [null, Validators.required]
+      movement_uuid: [movement ? movement.movement_uuid:null],
+      amount: [movement ? movement.amount:null, Validators.required],
+      concept: [movement ? movement.concept:null, Validators.required],
+      date: [movement ? movement.date:null, Validators.required],
+      type: [movement ? movement.type:null, Validators.required]
     });
   }
 

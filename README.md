@@ -86,3 +86,7 @@
 **RxJS library**
 **ngOnInit, ngOnChanges**
 
+## 9. Edit movement
+
+**Pass data to modal**
+

@@ -15,10 +15,9 @@ export class MovementComponent implements OnInit {
 
   ngOnInit() {
   }
-  showModal() {
+  createMovement() {
     let dialogRef = this.dialog.open(MovementFormComponent, {
-      width: '280px',
-      data: {}
+      width: '280px'
     });
   }
 }
