@@ -144,5 +144,13 @@ app.get('/', function (req, res) {
 })
 ```
 
+## 18. Connect to mongo
+
+- mongo
+- show databases
+- use doings_workshop
+- show collections
+- db.createCollection('movements')
+
 
 
