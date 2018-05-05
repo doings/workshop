@@ -152,5 +152,26 @@ app.get('/', function (req, res) {
 - show collections
 - db.createCollection('movements')
 
+## 19. Send movement
+
+**Http Module**
+- http.post
+```javascript
+  public saveMovement(movement) {
+    let url = this.host + '/movement';
+    return this.http.post(url, movement);
+  }
+```
+- subscribe
+```javascript
+  this.apiService.saveMovement(movement)
+    .subscribe(
+      res => showSuccess(res),
+      err => showError(err),
+    );
+```
+
+**CORS**
+
 
 

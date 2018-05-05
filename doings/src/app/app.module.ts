@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -37,6 +38,7 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { MovementComponent } from './components/movement/movement.component';
 
+import { ApiService } from './services/api.service';
 import { DataService } from './services/data.service';
 import { MovementFormComponent } from './components/movement-form/movement-form.component';
 import { MovementListComponent } from './components/movement-list/movement-list.component';
@@ -83,6 +85,7 @@ import { MovementChartComponent } from './components/movement-chart/movement-cha
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -112,6 +115,7 @@ import { MovementChartComponent } from './components/movement-chart/movement-cha
     ReactiveFormsModule
   ],
   providers: [
+    ApiService,
     DataService
   ],
   bootstrap: [AppComponent]

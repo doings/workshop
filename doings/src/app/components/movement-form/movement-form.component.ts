@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
+import {ApiService} from './../../services/api.service';
 import {DataService} from './../../services/data.service';
 import {formatDate} from './../../shared/utils';
 
@@ -19,6 +20,7 @@ export class MovementFormComponent implements OnInit {
 
   form : FormGroup;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+    public apiService: ApiService,
     public dataService: DataService,
     public dialogRef: MatDialogRef<MovementFormComponent>,
     private formBuilder: FormBuilder) {
@@ -38,10 +40,12 @@ export class MovementFormComponent implements OnInit {
   save() {
     if(this.form.valid){
       let movement = this.form.value;
-      if(!movement.movement_uuid) movement.movement_uuid = '_' + Math.random().toString(36).substr(2, 15);
       movement.date = formatDate(movement.date);
-      this.dataService.saveMovement(movement);
-      this.dialogRef.close();
+      this.apiService.saveMovement(movement)
+        .subscribe(
+          res => this.dialogRef.close(),
+          err => this.dialogRef.close()
+        );
     }
   }
 
