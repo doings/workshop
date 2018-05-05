@@ -7,12 +7,12 @@ import {formatDate} from './../shared/utils';
 })
 export class BalancePipe implements PipeTransform {
 
-  transform(movements: any, args?: any): any {
+  transform(movements: any, type?: any, filter?: any, interval?: any): any {
     let balance = 0;
     let currentDate = formatDate(new Date());
-    switch (args) {
+    switch (type) {
       case "balance":
-        movements.filter((m)=>m.date <= currentDate).map((m)=>{
+        movements.filter((m)=>m.date <= currentDate || filter || interval).map((m)=>{
           let amount = parseFloat(m.amount);
           switch (m.type) {
             case "balance":

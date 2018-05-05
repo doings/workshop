@@ -12,8 +12,13 @@ import {formatDate} from './../../shared/utils';
   styleUrls: ['./movement-chart.component.scss']
 })
 export class MovementChartComponent implements OnInit {
-
-
+  afterSetExtremes = (event: any) => {
+    let extremes = event.target.chart.xAxis[0].getExtremes();
+    let min = extremes.min;
+    let max = extremes.max;
+    if(this.zoomed) this.dataService.changeInterval({max: parseInt(max), min: parseInt(min)});
+    this.zoomed = true;
+  }
   options: Highcharts.Options = {
     title: { text: ''},
     credits: { enabled: false},
@@ -64,7 +69,9 @@ export class MovementChartComponent implements OnInit {
       title: {
         text: ''
       },
-      events: {}
+      events: {
+        afterSetExtremes: this.afterSetExtremes.bind(this)
+      }
     },
     yAxis: {
       title: {
@@ -76,9 +83,11 @@ export class MovementChartComponent implements OnInit {
   };
   chart: Highcharts.ChartObject;
   showWalletBalance: boolean = true;
+  zoomed: boolean = true;
   @ViewChild('chartTarget') chartTarget: ElementRef;
   @Input('movements') movements: any;
   @Input('filter') filter: any;
+  @Input('interval') interval: any;
   constructor(public dataService: DataService) { }
 
   ngOnInit() {
@@ -87,6 +96,7 @@ export class MovementChartComponent implements OnInit {
 
   ngOnChanges(map) {
     if(map.movements) this.chartMovements(map.movements.currentValue);
+    if(map.interval && map.interval.previousValue && !map.interval.currentValue) this.resetZoom();
   }
 
   chartMovements(movs) {
@@ -193,5 +203,9 @@ export class MovementChartComponent implements OnInit {
     let amount = parseFloat(movement.amount);
     amount = movement.type == 'outcome' ? -amount : amount;
     return ' <br> <b>' + movement.concept + ':</b> ' + amount;
+  }
+  resetZoom() {
+    this.zoomed = false;
+    this.chart.xAxis[0].setExtremes(null,null)
   }
 }

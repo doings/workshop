@@ -1,4 +1,11 @@
 
+
+.user-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
 .user-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -9,8 +16,29 @@
   }
 }
 
-h2{  
+h1 {
+  max-width: 180px;
+  white-space: normal;
+  line-height: 22px;
+  font-size: 12px;
+  font-weight: 100;
+  small{
+    display: block;
+    font-size: 12px;
+  }
+  span {
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+
+h2, button {
   position: absolute;
   right: 20px;
+  padding: 0 4px;
   font-size: 16px;
+  @media screen and (max-width: 720px){
+    font-size: 10px;
+  }
 }
+

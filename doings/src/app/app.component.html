@@ -1,11 +1,11 @@
 
-<doings-user [movements]="movements"></doings-user>
+<doings-user [movements]="movements" [filter]="filter" [interval]="interval"></doings-user>
 <div class="app-container">
   <div class="chart-container">
-    <doings-movement-chart [movements]="movements" [filter]="filter"></doings-movement-chart>
+    <doings-movement-chart [movements]="(filter ? movements : allMovements)" [filter]="filter" [interval]="interval"></doings-movement-chart>
   </div>
   <div class="list-container">
-    <doings-movement-filter (filterChanged)="changeFilter($event)"></doings-movement-filter>
+    <doings-movement-filter [filter]="filter"></doings-movement-filter>
     <doings-movement-list [movements]="movements"></doings-movement-list>
   </div>
 </div>

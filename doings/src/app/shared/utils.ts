@@ -49,3 +49,12 @@ export function filterMovs(movements, filter) {
   }
   return movements;
 }
+
+export function filterByInterval(movements, interval) {
+  if(interval){
+    movements = movements.filter((x)=>
+      (new Date(x.date) >= new Date(interval.min) && new Date(x.date) <= new Date(interval.max))
+    );
+  }
+  return movements;
+}

@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import {DataService} from './../../services/data.service';
 
 @Component({
   selector: 'doings-movement-filter',
@@ -7,14 +9,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class MovementFilterComponent implements OnInit {
   
-  @Output('filterChanged') filterChanged = new EventEmitter();
-  constructor() { }
+  @Input('filter') filter: any = '';
+  constructor(public dataService: DataService) { }
 
   ngOnInit() {
   }
 
-  changeFilter(event) {
-    this.filterChanged.next(event);
+  changeFilter(filter) {
+    this.dataService.changeFilter(filter);
   }
 
 }

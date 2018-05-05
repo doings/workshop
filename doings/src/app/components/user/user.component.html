@@ -4,8 +4,18 @@
   <mat-toolbar-row>
     <mat-icon class="">account_balance_wallet</mat-icon>
     <mat-divider [vertical]="true"></mat-divider>
-    <h1>Your balance is {{ movements | balance:'balance' }}€</h1>
-    <h2>{{ today | date }}</h2>
+    <h1><small>Your balance is</small><span>{{ movements | balance:'balance':filter:interval }}</span>€</h1>
+    <h2 *ngIf="!interval && !filter">{{ today | date }}</h2>
+    <button *ngIf="interval || filter" mat-raised-button color="primary" (click)="changeInterval()">
+      <span *ngIf="filter">
+        {{ filter }}
+      </span>
+      <span *ngIf="filter && interval">-</span>
+      <span *ngIf="interval">
+        {{ interval.min | date }} - {{ interval.max | date }}
+      </span>
+      <mat-icon class="">close</mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
 

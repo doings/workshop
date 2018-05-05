@@ -7,11 +7,13 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class DataService {
 
-
+  private filterChange = new Subject<boolean>();
+  filterChanged = this.filterChange.asObservable();
+  private intervalChange = new Subject<boolean>();
+  intervalChanged = this.intervalChange.asObservable();
   private movementsChange = new Subject<boolean>();
   movementsChanged = this.movementsChange.asObservable();
   constructor() { }
-
   getMovements() {
     return this.getItem('movements');
   }
@@ -31,6 +33,12 @@ export class DataService {
     if(movement_uuid) movements = movements.filter((m)=>m.movement_uuid!=movement_uuid);
     this.movementsChange.next(movements);
     return this.setItem('movements', movements);
+  }
+  changeInterval(interval) {
+    this.intervalChange.next(interval);
+  }
+  changeFilter(filter) {
+    this.filterChange.next(filter);
   }
   getItem(key) {
     return JSON.parse(localStorage.getItem(key));
