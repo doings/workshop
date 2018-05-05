@@ -173,5 +173,23 @@ app.get('/', function (req, res) {
 
 **CORS**
 
+## 20. Movement model
+
+**Create schema**
+```javascript
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var movementSchema = new Schema({
+  movement_uuid: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  ....
+});
+module.exports = mongoose.model('Movement', movementSchema);
+```
+
+
 
 
