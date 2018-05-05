@@ -136,5 +136,13 @@ app.listen(3000, function () {
 - npm i
 - nodemon index.js
 
+## 17. Create service
+
+```javascript
+app.get('/', function (req, res) {
+  res.send('Hello World!')
+})
+```
+
 
 
