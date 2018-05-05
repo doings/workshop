@@ -113,3 +113,28 @@
 
 ## 15. Translate
 
+## 16. Start express
+
+**Start express with nodemon**
+- npm init
+- npm i -g nodemon
+- npm i express --save
+- touch index.js
+- nodemon index.js
+
+```javascript
+const express = require('express')
+const app = express()
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+})
+```
+
+###### Note: for the workshop the app is already created, just install dependencies with:
+- npm i -g nodemon
+- npm i
+- nodemon index.js
+
+
+

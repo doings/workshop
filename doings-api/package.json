@@ -1,0 +1,22 @@
+{
+  "name": "doings-api",
+  "version": "1.0.0",
+  "description": "doings app simple api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "jwt-simple": "^0.5.1",
+    "mongoose": "^5.0.17",
+    "passport": "^0.4.0",
+    "sha1": "^1.1.1",
+    "validator": "^10.1.0"
+  }
+}
