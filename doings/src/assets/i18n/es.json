@@ -1,0 +1,24 @@
+{
+  "YOUR_BALANCE": "Tu saldo es",
+  "EMPTY_WALLET": "Tu cartera está vacía",
+  "BALANCE": "Saldo",
+  "EXPENSES": "Gastos",
+  "EXPENSE": "Gasto",
+  "INCOMES": "Ingresos",
+  "INCOME": "Ingreso",
+
+  "EDIT": "Editar",
+  "INSERT": "Insertar",
+  "MOVEMENT": "movimiento",
+  "AMOUNT": "Cantidad",
+  "AMOUNT_ERROR": "Introduce un valor válido, como 9.99",
+
+  "CONCEPT": "Concepto",
+  "CONCEPT_ERROR": "Introduce un concepto",
+  "TYPE": "Tipo",
+  "TYPE_ERROR": "Indica un tipo de movimiento",
+  "DATE": "Fecha",
+  "DATE_ERROR": "Introduce una fecha",
+  "DELETE": "Borrar",
+  "FILTER": "Filtrar"
+}

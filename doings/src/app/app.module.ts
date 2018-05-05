@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 import { CdkTableModule } from '@angular/cdk/table';
@@ -17,6 +20,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatMenuModule,
   MatNativeDateModule,
   MatSelectModule,
   MatSnackBarModule,
@@ -25,6 +29,9 @@ import {
   MatToolbarModule
    } from '@angular/material';
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
@@ -65,6 +72,7 @@ import { MovementChartComponent } from './components/movement-chart/movement-cha
     MatInputModule,
     MatListModule,
     MatNativeDateModule,
+    MatMenuModule,
     MatSelectModule,
     MatSnackBarModule,
     MatStepperModule,
@@ -75,6 +83,14 @@ import { MovementChartComponent } from './components/movement-chart/movement-cha
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
@@ -87,6 +103,7 @@ import { MovementChartComponent } from './components/movement-chart/movement-cha
     MatInputModule,
     MatListModule,
     MatNativeDateModule,
+    MatMenuModule,
     MatSelectModule,
     MatSnackBarModule,
     MatStepperModule,

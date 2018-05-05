@@ -1,31 +1,31 @@
 
 <div class="movement-form-container">
-<h1 mat-dialog-title>{{form.value.movement_uuid ? 'Edit':'Insert'}} movement</h1>
+<h1 mat-dialog-title>{{form.value.movement_uuid ? ('EDIT'|translate):('INSERT'|translate)}} {{'MOVEMENT' | translate}}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form">
     <div class="movement-container">
       <mat-form-field>
-        <input matInput placeholder="Amount" formControlName="amount" class="amount" pattern="[0-9.]+">
+        <input matInput placeholder="{{ 'AMOUNT' | translate}}" formControlName="amount" class="amount" pattern="[0-9.]+">
         <mat-error *ngIf="!form.controls.amount.valid">
-          Please enter a valid amount, like 5.99
+          {{ 'AMOUNT_ERROR' | translate}}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Concept" formControlName="concept">
+        <input matInput placeholder="{{ 'CONCEPT' | translate}}" formControlName="concept">
         <mat-error *ngIf="!form.controls.concept.valid">
-          Please enter a valid concept
+          {{ 'CONCEPT_ERROR' | translate}}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="Type" formControlName="type">
-          <mat-option value="outcome">Expense</mat-option>
-          <mat-option value="income">Income</mat-option>
-          <mat-option value="balance">Balance</mat-option>
+        <mat-select placeholder="{{ 'TYPE' | translate}}" formControlName="type">
+          <mat-option value="outcome">{{ 'EXPENSE' | translate}}</mat-option>
+          <mat-option value="income">{{ 'INCOME' | translate}}</mat-option>
+          <mat-option value="balance">{{ 'BALANCE' | translate}}</mat-option>
         </mat-select>
         <mat-error *ngIf="!form.controls.type.valid || form.controls.type.dirty">
-          Please enter a movement type
+          {{ 'TYPE_ERROR' | translate}}
         </mat-error>
       </mat-form-field>
 
@@ -36,14 +36,14 @@
           <input matInput [matDatepicker]="pickerDate" formControlName="date">
         </span>
         <mat-error *ngIf="!form.controls.date.valid || form.controls.date.dirty">
-          Please enter a date
+          {{ 'DATE_ERROR' | translate}}
         </mat-error>
       </mat-form-field>
     </div>
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="save()">{{form.value.movement_uuid ? 'Edit':'Insert'}}</button>
-  <button *ngIf="form.value.movement_uuid" mat-button color="primary" (click)="delete(form.value.movement_uuid)">Delete</button>
+  <button mat-raised-button color="primary" (click)="save()">{{form.value.movement_uuid ? ('EDIT'|translate):('INSERT'|translate)}}</button>
+  <button *ngIf="form.value.movement_uuid" mat-button color="primary" (click)="delete(form.value.movement_uuid)">{{ 'DELETE' | translate}}</button>
 </div>
 </div>

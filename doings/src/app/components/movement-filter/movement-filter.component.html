@@ -1,6 +1,6 @@
 
 <div class="movement-filter-container">
   <mat-form-field>
-    <input matInput placeholder="Filter" (keyup)="changeFilter($event.target.value)" [value]="filter?filter:''" class="filter">
+    <input matInput placeholder="{{'FILTER'|translate}}" (keyup)="changeFilter($event.target.value)" [value]="filter?filter:''" class="filter">
   </mat-form-field>
 </div>

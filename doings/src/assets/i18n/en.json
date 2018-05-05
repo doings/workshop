@@ -1,0 +1,23 @@
+{
+  "YOUR_BALANCE": "Your balance is",
+  "EMPTY_WALLET": "Your wallet is empty",
+  "BALANCE": "Balance",
+  "EXPENSES": "Expenses",
+  "EXPENSE": "Expense",
+  "INCOMES": "Incomes",
+  "INCOME": "Income",
+
+  "EDIT": "Edit",
+  "INSERT": "Insert",
+  "MOVEMENT": "movement",
+  "AMOUNT": "Amount",
+  "AMOUNT_ERROR": "Please enter a valid amount, like 5.99",
+  "CONCEPT": "Concept",
+  "CONCEPT_ERROR": "Please enter a valid concept",
+  "TYPE": "Type",
+  "TYPE_ERROR": "Please enter a movement type",
+  "DATE": "Date",
+  "DATE_ERROR": "Please enter a date",
+  "DELETE": "Delete",
+  "FILTER": "Filter"
+}

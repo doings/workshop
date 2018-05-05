@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {DataService} from './services/data.service';
 
 import {sortHistorical, filterMovs, filterByInterval} from './shared/utils';
@@ -14,7 +16,10 @@ export class AppComponent {
   interval: any = null;
   movements: any;
   allMovements: any;
-  constructor(public dataService: DataService) {
+  constructor(public dataService: DataService,
+    private translate: TranslateService) {
+    this.initTranslate();
+
     let movements = dataService.getMovements();
     this.allMovements = movements;
     this.movements = this.filterMovements(movements);
@@ -36,6 +41,16 @@ export class AppComponent {
         this.movements = this.filterMovements(this.allMovements);
       }
     );
+  }
+  initTranslate() {
+    let browserLang = this.translate.getBrowserLang();
+    if (browserLang == 'es') {
+      this.translate.setDefaultLang('es');
+      this.translate.use('es');
+    } else {
+      this.translate.setDefaultLang('en');
+      this.translate.use('en');
+    }
   }
   filterMovements(movements) {
     movements = sortHistorical(movements);

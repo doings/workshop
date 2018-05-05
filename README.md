@@ -111,3 +111,5 @@
 
 ## 14. Chart events
 
+## 15. Translate
+

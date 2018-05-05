@@ -2,9 +2,16 @@
 <div class="user-container">
 <mat-toolbar class="user-toolbar" color="primary">
   <mat-toolbar-row>
-    <mat-icon class="">account_balance_wallet</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="">account_balance_wallet</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button *ngFor="let lang of langs" mat-menu-item (click)="changeLang(lang)">
+        <span>{{lang}}</span>
+      </button>
+    </mat-menu>
     <mat-divider [vertical]="true"></mat-divider>
-    <h1><small>Your balance is</small><span>{{ movements | balance:'balance':filter:interval }}</span>€</h1>
+    <h1><small>{{ 'YOUR_BALANCE' | translate}}</small><span>{{ movements | balance:'balance':filter:interval }}</span>€</h1>
     <h2 *ngIf="!interval && !filter">{{ today | date }}</h2>
     <button *ngIf="interval || filter" mat-raised-button color="primary" (click)="changeInterval()">
       <span *ngIf="filter">
@@ -22,10 +29,10 @@
 <mat-card>
   <mat-grid-list cols="2" rowHeight="20px">
     <mat-grid-tile>
-      <small>Expenses: {{ movements | balance:'outcome' }}€</small>
+      <small>{{ 'EXPENSES' | translate}}: {{ movements | balance:'outcome' }}€</small>
     </mat-grid-tile>
     <mat-grid-tile>
-      <small>Incomes: {{ movements | balance:'income' }}€</small>
+      <small>{{ 'INCOMES' | translate}}: {{ movements | balance:'income' }}€</small>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
