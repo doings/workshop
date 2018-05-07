@@ -13,6 +13,7 @@ export class UserComponent implements OnInit {
   today;
   langs = ['es','en']
   currentLang;
+  @Input('user') user: any;
   @Input('filter') filter: any;
   @Input('interval') interval: any;
   @Input('movements') movements: any;

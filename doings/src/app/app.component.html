@@ -1,13 +1,16 @@
 
-<doings-user [movements]="movements" [filter]="filter" [interval]="interval"></doings-user>
-<div class="app-container">
-  <h2 *ngIf="movements && !movements.length">{{ 'EMPTY_WALLET' | translate}}</h2>
-  <div class="chart-container" *ngIf="!movements || movements.length">
-    <doings-movement-chart [movements]="(filter ? movements : allMovements)" [filter]="filter" [interval]="interval"></doings-movement-chart>
+<doings-auth *ngIf="!user"></doings-auth>
+<doings-user [user]="user" [movements]="movements" [filter]="filter" [interval]="interval"></doings-user>
+<ng-template [ngIf]="user">
+  <div class="app-container">
+    <h2 *ngIf="movements && !movements.length">{{ 'EMPTY_WALLET' | translate}}</h2>
+    <div class="chart-container" *ngIf="!movements || movements.length">
+      <doings-movement-chart [movements]="(filter ? movements : allMovements)" [filter]="filter" [interval]="interval"></doings-movement-chart>
+    </div>
+    <div class="list-container" *ngIf="!movements || movements.length">
+      <doings-movement-filter [filter]="filter"></doings-movement-filter>
+      <doings-movement-list [movements]="movements"></doings-movement-list>
+    </div>
   </div>
-  <div class="list-container" *ngIf="!movements || movements.length">
-    <doings-movement-filter [filter]="filter"></doings-movement-filter>
-    <doings-movement-list [movements]="movements"></doings-movement-list>
-  </div>
-</div>
-<doings-movement></doings-movement>
+  <doings-movement></doings-movement>
+</ng-template>

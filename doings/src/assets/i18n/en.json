@@ -19,5 +19,13 @@
   "DATE": "Date",
   "DATE_ERROR": "Please enter a date",
   "DELETE": "Delete",
-  "FILTER": "Filter"
+  "FILTER": "Filter",
+  "LOGIN": "Login",
+  "REGISTER": "Register",
+  "USERNAME": "Username",
+  "USERNAME_ERROR": "Username is not valid",
+  "PASSWORD": "Password",
+  "PASSWORD_ERROR": "Password is not valid",
+  "PASSWORD_REPEAT": "Repeat the password",
+  "PASSWORD_REPEAT_ERROR": "Password do not match"
 }

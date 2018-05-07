@@ -13,6 +13,7 @@ import {sortHistorical, filterMovs, filterByInterval} from './shared/utils';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  user: any;
   filter: any = null;
   interval: any = null;
   movements: any = [];

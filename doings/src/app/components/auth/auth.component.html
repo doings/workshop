@@ -1,0 +1,46 @@
+
+<mat-card class="auth-card">
+  <mat-card-content>
+
+    <mat-tab-group>
+      <mat-tab label="{{ 'LOGIN' | translate}}">
+        <form [formGroup]="loginForm">
+          <div class="auth-container">
+            <mat-form-field>
+              <input matInput placeholder="{{ 'USERNAME' | translate}}" formControlName="username">
+              <mat-error *ngIf="!loginForm.controls.username.valid">
+                {{ 'USERNAME_ERROR' | translate}}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="password" matInput placeholder="{{ 'PASSWORD' | translate}}" formControlName="password">
+              <mat-error *ngIf="!loginForm.controls.password.valid">
+                {{ 'PASSWORD_ERROR' | translate}}
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="login()">{{ 'LOGIN' | translate}}</button>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="{{ 'REGISTER' | translate}}">
+        <form [formGroup]="registerForm">
+          <div class="auth-container">
+            <mat-form-field>
+              <input matInput placeholder="{{ 'USERNAME' | translate}}" formControlName="username">
+              <mat-error *ngIf="!registerForm.controls.username.valid">
+                {{ 'USERNAME_ERROR' | translate}}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="password" matInput placeholder="{{ 'PASSWORD' | translate}}" formControlName="password">
+              <mat-error *ngIf="!registerForm.controls.password.valid">
+                {{ 'PASSWORD_ERROR' | translate}}
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="register()">{{ 'REGISTER' | translate}}</button>
+          </div>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

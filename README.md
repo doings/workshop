@@ -268,6 +268,14 @@ newMovement.save(function(err) {
   })
 ```
 
+## 23. Authentication forms
+
+**Check user**
+**Login form, login request**
+**Register form, register request**
+
+
+
 
 
 

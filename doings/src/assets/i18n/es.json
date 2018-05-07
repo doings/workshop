@@ -20,5 +20,13 @@
   "DATE": "Fecha",
   "DATE_ERROR": "Introduce una fecha",
   "DELETE": "Borrar",
-  "FILTER": "Filtrar"
+  "FILTER": "Filtrar",
+  "LOGIN": "Iniciar sesión",
+  "REGISTER": "Registrarse",
+  "USERNAME": "Username",
+  "USERNAME_ERROR": "El username no es válido",
+  "PASSWORD": "Contraseña",
+  "PASSWORD_ERROR": "La contraseña no es válida",
+  "PASSWORD_REPEAT": "Repite la contraseña",
+  "PASSWORD_REPEAT_ERROR": "Las contraseñas no coinciden"
 }

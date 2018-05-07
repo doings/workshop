@@ -27,6 +27,7 @@ import {
   MatSnackBarModule,
   MatStepperModule,
   MatTableModule,
+  MatTabsModule,
   MatToolbarModule
    } from '@angular/material';
 
@@ -45,6 +46,7 @@ import { MovementListComponent } from './components/movement-list/movement-list.
 import { BalancePipe } from './pipes/balance.pipe';
 import { MovementFilterComponent } from './components/movement-filter/movement-filter.component';
 import { MovementChartComponent } from './components/movement-chart/movement-chart.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 
 @NgModule({
@@ -56,7 +58,8 @@ import { MovementChartComponent } from './components/movement-chart/movement-cha
     MovementListComponent,
     BalancePipe,
     MovementFilterComponent,
-    MovementChartComponent
+    MovementChartComponent,
+    AuthComponent
   ],
   entryComponents: [
     MovementFormComponent
@@ -79,6 +82,7 @@ import { MovementChartComponent } from './components/movement-chart/movement-cha
     MatSnackBarModule,
     MatStepperModule,
     MatTableModule,
+    MatTabsModule,
     MatToolbarModule
   ],
   imports: [
@@ -111,6 +115,7 @@ import { MovementChartComponent } from './components/movement-chart/movement-cha
     MatSnackBarModule,
     MatStepperModule,
     MatTableModule,
+    MatTabsModule,
     MatToolbarModule,
     ReactiveFormsModule
   ],

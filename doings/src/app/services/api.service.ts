@@ -28,6 +28,14 @@ export class ApiService {
       return this.delete('/movement/' + movement_uuid).map((x)=>x.json());
   }
 
+  signIn(params?) {
+    return this.post('/user/signin', params).map((x)=>x.json())
+  }
+
+  signUp(params?) {
+    return this.post('/user/signup', params).map((x)=>x.json())
+  }
+
   get(endpoint: string, params?: any) {
     let headers = new Headers();
     let options = new RequestOptions({ headers: headers });
