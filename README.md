@@ -190,6 +190,31 @@ var movementSchema = new Schema({
 module.exports = mongoose.model('Movement', movementSchema);
 ```
 
+## 21. Save movement
+
+```javascript
+
+var MovementModel = require('./../models/movement.model');
+
+var newMovement = new MovementModel(req.body);
+newMovement.movement_uuid = uuid;
+newMovement.save(function(err) {
+  if (err) {
+    return res.json({
+      success: false,
+      msg: 'Uuid already exists. Try again.'
+    });
+  }
+  res.json({
+    success: true,
+    movement: newMovement
+  });
+});
+```
+
+
+
+
 
 
 

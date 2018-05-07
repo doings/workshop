@@ -1,13 +1,15 @@
 
+var MovementCtrl = require('./../controllers/movement.controller');
+
 module.exports = function(app) {
 
   app.route('/movement')
     .get(function (req, res) {
       res.send('Get Movements')
     })
-    .post(function (req, res) {
-      res.send('Post Movement: ' + JSON.stringify(req.body))
-    })
+    .post(
+      MovementCtrl.saveMovement
+    )
     .put(function (req, res) {
       res.send('Put Movement: ' + JSON.stringify(req.body))
     })
