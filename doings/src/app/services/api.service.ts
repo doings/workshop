@@ -12,11 +12,20 @@ export class ApiService {
     this.url = environment.apiHost;
   }
 
+  public getMovements() {
+    return this.get('/movement').map((x)=>x.json());
+  }
+
   public saveMovement(movement) {
     if(movement.movement_uuid)
       return this.put('/movement', movement).map((x)=>x.json());
     else
       return this.post('/movement', movement).map((x)=>x.json());
+  }
+
+  public deleteMovement(movement_uuid) {
+    if(movement_uuid)
+      return this.delete('/movement/' + movement_uuid).map((x)=>x.json());
   }
 
   get(endpoint: string, params?: any) {

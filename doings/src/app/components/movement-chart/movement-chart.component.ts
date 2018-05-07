@@ -91,7 +91,6 @@ export class MovementChartComponent implements OnInit {
   constructor(public dataService: DataService) { }
 
   ngOnInit() {
-    this.chartMovements(this.movements);
   }
 
   ngOnChanges(map) {
@@ -180,6 +179,11 @@ export class MovementChartComponent implements OnInit {
       }
       return label;
     }
+    /* Sorry about this */
+    setTimeout(()=>{
+      this.zoomed = false;
+      this.chart.reflow()
+    });
   }
   sortMovements(movs) {
     movs = Object.assign([], movs);

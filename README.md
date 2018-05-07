@@ -212,6 +212,64 @@ newMovement.save(function(err) {
 });
 ```
 
+## 22. Get, update and delete movements
+
+**Get**
+```javascript
+  MovementModel.find({}, {
+      _id: 0,
+      __v: 0
+    },
+    function(err, movements) {
+      if (err) throw err;
+      if (!movements) {
+        res.json({
+          success: false,
+          msg: 'Movements not found.'
+        });
+      } else {
+        res.json({
+          success: true,
+          movements: movements
+        });
+      }
+    });
+```
+
+**Update**
+```javascript
+  MovementModel
+    .findOne({
+      movement_uuid: req.body.movement_uuid
+    }, {},
+    function(err, movement) {
+        movement.concept = req.body.concept,
+        movement.amount = req.body.amount
+        movement.save(function(err, data) {
+          res.json({
+            success: true,
+            movement: movement
+          });
+        });
+      }
+    });
+```
+
+**Delete**
+```javascript
+  MovementModel.findOneAndRemove({
+    movement_uuid: req.params.movement_uuid
+  }, {},
+  function(err, deleted) {
+    res.json({
+      success: true,
+      deleted: deleted
+    });
+  })
+```
+
+
+
 
 
 

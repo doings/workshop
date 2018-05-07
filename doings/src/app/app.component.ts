@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
 
+import {ApiService} from './services/api.service';
 import {DataService} from './services/data.service';
 
 import {sortHistorical, filterMovs, filterByInterval} from './shared/utils';
@@ -12,21 +13,19 @@ import {sortHistorical, filterMovs, filterByInterval} from './shared/utils';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  filter: any;
+  filter: any = null;
   interval: any = null;
-  movements: any;
-  allMovements: any;
-  constructor(public dataService: DataService,
+  movements: any = [];
+  allMovements: any = [];
+  constructor(
+    public apiService: ApiService,
+    public dataService: DataService,
     private translate: TranslateService) {
     this.initTranslate();
-
-    let movements = dataService.getMovements();
-    this.allMovements = movements;
-    this.movements = this.filterMovements(movements);
+    this.getMovements();
     this.dataService.movementsChanged.subscribe( 
       movements => {
-        this.allMovements = movements;
-        this.movements = this.filterMovements(movements);
+        this.getMovements();
       }
     );
     this.dataService.intervalChanged.subscribe( 
@@ -41,6 +40,16 @@ export class AppComponent {
         this.movements = this.filterMovements(this.allMovements);
       }
     );
+  }
+  getMovements(){
+    this.apiService.getMovements().subscribe((movements:any) => {
+        if(movements.success){
+          movements = movements.movements;
+          this.allMovements = movements;
+          this.movements = this.filterMovements(movements);
+        }
+      }, (err:any) => {
+      });
   }
   initTranslate() {
     let browserLang = this.translate.getBrowserLang();

@@ -43,14 +43,23 @@ export class MovementFormComponent implements OnInit {
       movement.date = formatDate(movement.date);
       this.apiService.saveMovement(movement)
         .subscribe(
-          res => this.dialogRef.close(),
+          res => {
+            this.dataService.changeMovements();
+            this.dialogRef.close()
+          },
           err => this.dialogRef.close()
         );
     }
   }
 
   delete(movement_uuid) {
-    this.dataService.deleteMovement(movement_uuid);
-    this.dialogRef.close();
+      this.apiService.deleteMovement(movement_uuid)
+        .subscribe(
+          res => {
+            this.dataService.changeMovements();
+            this.dialogRef.close()
+          },
+          err => this.dialogRef.close()
+        );
   }
 }

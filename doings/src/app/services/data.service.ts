@@ -14,25 +14,8 @@ export class DataService {
   private movementsChange = new Subject<boolean>();
   movementsChanged = this.movementsChange.asObservable();
   constructor() { }
-  getMovements() {
-    return this.getItem('movements');
-  }
-  saveMovement(movement) {
-    let movements = this.getItem('movements');
-    if(!movements) movements = [];
-    if(movement.movement_uuid && movements.filter((m)=>m.movement_uuid==movement.movement_uuid).length){
-      movements = movements.map((m)=>m.movement_uuid==movement.movement_uuid?movement:m);
-    }else{
-      movements.push(movement);
-    }
-    this.movementsChange.next(movements);
-    return this.setItem('movements', movements);
-  }
-  deleteMovement(movement_uuid) {
-    let movements = this.getItem('movements');
-    if(movement_uuid) movements = movements.filter((m)=>m.movement_uuid!=movement_uuid);
-    this.movementsChange.next(movements);
-    return this.setItem('movements', movements);
+  changeMovements() {
+    this.movementsChange.next();
   }
   changeInterval(interval) {
     this.intervalChange.next(interval);
