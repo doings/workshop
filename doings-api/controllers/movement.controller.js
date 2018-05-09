@@ -3,10 +3,15 @@ var mongoose = require('mongoose');
 var sha1 = require('sha1');
 
 var MovementModel = require('./../models/movement.model');
+var UserModel = require('./../models/user.model');
 
 exports.getMovements = function(req, res, next) {
 
-  MovementModel.find({}, {
+  var user_uuid = req.user.user_uuid;
+
+  MovementModel.find({
+    user_uuid: user_uuid
+  }, {
       _id: 0,
       __v: 0
     },
@@ -35,23 +40,42 @@ exports.saveMovement = function(req, res, next) {
     });
   } else {
 
-    // create uuid
-    var uuid = sha1(Date.now() + req.body.amount + req.body.concept)
+    var user_uuid = req.user.user_uuid;
 
-    var newMovement = new MovementModel(req.body);
-    newMovement.movement_uuid = uuid;
-    newMovement.save(function(err) {
-      if (err) {
-        return res.json({
+    UserModel
+      .findOne({
+        user_uuid: user_uuid
+    }, {},
+    function(err, user) {
+      if (err || !user) {
+        res.json({
           success: false,
-          msg: 'Uuid already exists. Try again.'
+          msg: 'User not found.'
         });
+        return;
       }
-      newMovement._id = undefined;
-      newMovement.__v = undefined;
-      res.json({
-        success: true,
-        movement: newMovement
+      // create uuid
+      var uuid = sha1(Date.now() + user_uuid + req.body.amount + req.body.concept)
+
+      var newMovement = new MovementModel(req.body);
+      newMovement.user_uuid = user_uuid;
+      newMovement.movement_uuid = uuid;
+      newMovement.save(function(err) {
+        if (err) {
+          return res.json({
+            success: false,
+            msg: 'Movement save error'
+          });
+        }
+        user.movements.push(newMovement);
+        user.save(function(err, data) {
+          newMovement._id = undefined;
+          newMovement.__v = undefined;
+          res.json({
+            success: true,
+            movement: newMovement
+          });
+        });
       });
     });
   }
@@ -59,9 +83,12 @@ exports.saveMovement = function(req, res, next) {
 
 exports.updateMovement = function(req, res, next) {
 
+  var user_uuid = req.user.user_uuid;
+
   MovementModel
     .findOne({
-      movement_uuid: req.body.movement_uuid
+      movement_uuid: req.body.movement_uuid,
+      user_uuid: user_uuid
     }, {},
     function(err, movement) {
       if (err || !movement) {
@@ -86,13 +113,24 @@ exports.updateMovement = function(req, res, next) {
 
 exports.deleteMovement = function(req, res, next) {
 
+  var user_uuid = req.user.user_uuid;
+
   MovementModel.findOneAndRemove({
-    movement_uuid: req.params.movement_uuid
+    movement_uuid: req.params.movement_uuid,
+    user_uuid: user_uuid
   }, {},
   function(err, deleted) {
-    res.json({
-      success: true,
-      deleted: deleted
-    });
-  })
+    UserModel.findOneAndUpdate(
+      {
+        user_uuid: user_uuid
+      },
+      // no _id it is array of objectId not object with _ids
+      { $pull: { movements: deleted.id  } },
+      { new: true },
+      function(err, removedFromUser) {
+        if (err) { console.error(err) }
+        res.status(200).send(removedFromUser)
+      })
+  });
+
 };

@@ -8,6 +8,10 @@ var movementSchema = new Schema({
     unique: true,
     required: true
   },
+  user_uuid: {
+    type: String,
+    ref: 'User'
+  },
   concept: String,
   // balance - income - outcome
   type: String,

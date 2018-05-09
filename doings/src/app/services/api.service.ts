@@ -68,25 +68,49 @@ export class ApiService {
   }
 
   get(endpoint: string, params?: any) {
+    let token;
     let headers = new Headers();
+    try{
+      if(localStorage.getItem('token')) token = localStorage.getItem('token');
+    }catch(e){
+    }
+    if(token) headers.set('Authorization', 'Bearer '+token);
     let options = new RequestOptions({ headers: headers });
     return this.http.get(this.url + endpoint, options);
   }
 
   post(endpoint: string, body?: any) {
+    let token;
     let headers = new Headers();
+    try{
+      if(localStorage.getItem('token')) token = localStorage.getItem('token');
+    }catch(e){
+    }
+    if(token) headers.set('Authorization', 'Bearer '+token);
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.url + endpoint, body, options);
   }
 
   put(endpoint: string, body?: any) {
+    let token;
     let headers = new Headers();
+    try{
+      if(localStorage.getItem('token')) token = localStorage.getItem('token');
+    }catch(e){
+    }
+    if(token) headers.set('Authorization', 'Bearer '+token);
     let options = new RequestOptions({ headers: headers });
     return this.http.put(this.url + endpoint, body, options);
   }
 
   delete(endpoint: string) {
+    let token;
     let headers = new Headers();
+    try{
+      if(localStorage.getItem('token')) token = localStorage.getItem('token');
+    }catch(e){
+    }
+    if(token) headers.set('Authorization', 'Bearer '+token);
     let options = new RequestOptions({ headers: headers });
     return this.http.delete(this.url + endpoint, options);
   }

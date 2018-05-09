@@ -291,6 +291,9 @@ newMovement.save(function(err) {
 
 **Logout**
 
+## 25. Authenticated requests
+
+**next()**
 
 
 

@@ -104,3 +104,15 @@ exports.signUp = function(req, res) {
     });
   }
 };
+
+exports.loginRequired = function(req, res, next) {
+  var authorization = req.headers.authorization;
+  try {
+    var token = authorization.split(' ')[1];
+    var payload = jwt.decode(token, config.secret);
+    req.user = payload;
+    next();
+  } catch (e) {
+    return res.status(401).send('unauthorized');
+  }
+};
