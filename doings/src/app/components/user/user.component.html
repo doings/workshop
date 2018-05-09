@@ -9,6 +9,9 @@
       <button *ngFor="let lang of langs" mat-menu-item (click)="changeLang(lang)">
         <span>{{lang}}</span>
       </button>
+      <button *ngIf="user" mat-menu-item (click)="logOut()">
+        <span>{{'LOGOUT' | translate}}</span>
+      </button>
     </mat-menu>
     <mat-divider [vertical]="true"></mat-divider>
     <ng-template [ngIf]="user">

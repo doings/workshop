@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
+import {ApiService} from './../../services/api.service';
 import {DataService} from './../../services/data.service';
 
 @Component({
@@ -17,7 +18,9 @@ export class UserComponent implements OnInit {
   @Input('filter') filter: any;
   @Input('interval') interval: any;
   @Input('movements') movements: any;
-  constructor(public dataService: DataService,
+  constructor(
+    public dataService: DataService,
+    public apiService: ApiService,
     public translate: TranslateService) {
     this.today = new Date();
   }
@@ -33,6 +36,10 @@ export class UserComponent implements OnInit {
   changeLang(lang) {
     this.translate.use(lang);
     this.currentLang = lang;
+  }
+
+  logOut() {
+    this.apiService.logOut();
   }
 
 }

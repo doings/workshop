@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import {Http, Headers, RequestOptions} from '@angular/http';
+import {Subject} from "rxjs/Subject";
+import {JwtHelper} from 'angular2-jwt';
 
 import {environment} from './../../environments/environment';
 
@@ -8,6 +10,8 @@ import {environment} from './../../environments/environment';
 export class ApiService {
 
   url: string;
+  private authenticate = new Subject<boolean>();
+  authenticated = this.authenticate.asObservable();
   constructor(public http: Http) {
     this.url = environment.apiHost;
   }
@@ -34,6 +38,33 @@ export class ApiService {
 
   signUp(params?) {
     return this.post('/user/signup', params).map((x)=>x.json())
+  }
+
+  // save the token in localStorage and change the navbar state
+  saveToken(token: string): void {
+    let userData = null;
+    if(!token) localStorage.removeItem('token')
+    else {
+      localStorage.setItem('token', token);
+      let jwtHelper: JwtHelper = new JwtHelper();
+      userData = jwtHelper.decodeToken(token);
+    }
+    this.authenticate.next(userData);
+  }
+
+  getCurrentUser() {
+    let token = localStorage.getItem('token');
+    if(token){
+      let jwtHelper: JwtHelper = new JwtHelper();
+      token = jwtHelper.decodeToken(token);
+    }
+    return token ? token : null;
+  }
+
+  // delete the token in localStorage and change the navbar state
+  logOut(): void {
+    localStorage.removeItem('token');
+    this.authenticate.next(null);
   }
 
   get(endpoint: string, params?: any) {

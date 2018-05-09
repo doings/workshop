@@ -20,6 +20,7 @@
   "DATE_ERROR": "Please enter a date",
   "DELETE": "Delete",
   "FILTER": "Filter",
+  "LOGOUT": "Logout",
   "LOGIN": "Login",
   "REGISTER": "Register",
   "USERNAME": "Username",

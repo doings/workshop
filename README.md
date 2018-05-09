@@ -275,6 +275,22 @@ newMovement.save(function(err) {
 **Register form, register request**
 
 
+## 24. Authentication services
+
+**Install Jwt**
+- cd doings
+- npm i angular2-jwt --save
+- cd doings-api
+- npm i jwt-simple passport-jwt --save
+
+**Signin service**
+
+**Signup service**
+
+**Save token**
+
+**Logout**
+
 
 
 

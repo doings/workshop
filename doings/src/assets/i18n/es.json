@@ -21,6 +21,7 @@
   "DATE_ERROR": "Introduce una fecha",
   "DELETE": "Borrar",
   "FILTER": "Filtrar",
+  "LOGOUT": "Cerrar sesión",
   "LOGIN": "Iniciar sesión",
   "REGISTER": "Registrarse",
   "USERNAME": "Username",

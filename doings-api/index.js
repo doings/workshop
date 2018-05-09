@@ -4,8 +4,12 @@ const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 const cors = require('cors')
+var passport = require('passport');
 
 var config = require('./config/database');
+
+require('./config/passport')(passport);
+
 
 /* Body parse middleware */
 app.use(bodyParser.json());
@@ -19,6 +23,8 @@ app.use(cors({
   credentials: true
 }));
 
+app.use(passport.initialize());
+
 mongoose.connect(config.database);
 var db = mongoose.connection;
 
@@ -28,6 +34,7 @@ db.once('open', function() {
 
   require('./services/index.js')(app);
   require('./services/movement.js')(app);
+  require('./services/user.js')(app);
 
   app.listen(3000, function () {
     console.log('doings-api listening on port 3000!')

@@ -23,7 +23,13 @@ export class AppComponent {
     public dataService: DataService,
     private translate: TranslateService) {
     this.initTranslate();
-    this.getMovements();
+    this.initUser();
+    this.apiService.authenticated.subscribe( 
+      user => {
+        this.user = user
+        if(this.user) this.getMovements();
+      } 
+    );
     this.dataService.movementsChanged.subscribe( 
       movements => {
         this.getMovements();
@@ -41,6 +47,10 @@ export class AppComponent {
         this.movements = this.filterMovements(this.allMovements);
       }
     );
+  }
+  initUser(){
+    this.getMovements();
+    this.user = this.apiService.getCurrentUser();
   }
   getMovements(){
     this.apiService.getMovements().subscribe((movements:any) => {
